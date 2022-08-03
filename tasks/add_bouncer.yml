@@ -2,8 +2,8 @@
 - name: Install bouncer (currently only firewall)
   apt:
     name:
-      - crowdsec-firewall-bouncer
       - crowdsec-firewall-bouncer-iptables
+    state: present
 
 - name: Register new bouncer
   command: cscli bouncers add {{ inventory_hostname }} -o raw
