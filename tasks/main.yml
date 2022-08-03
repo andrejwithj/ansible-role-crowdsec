@@ -18,6 +18,7 @@
   apt:
     name:
       - crowdsec
+    state: present
 
 - name: Deploy main config
   template:
