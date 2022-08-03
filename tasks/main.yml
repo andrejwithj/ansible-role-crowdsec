@@ -41,10 +41,9 @@
 - name: Flush handlers to apply config
   meta: flush_handlers
 
-- name: Register agent(s)
-  include_tasks: register_agent.yml
-  when:
-    - crowdsec_delegate_server_hostname != inventory_hostname
+- name: Enroll crowdsec instance
+  command: cscli console enroll {{ cscli_api_key }}
+  when: cscli_api_key is defined
 
 - name: Register distributed bouncers(s)
   include_tasks: add_bouncer.yml
